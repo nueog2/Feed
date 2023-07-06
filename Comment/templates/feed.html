@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feed Page</title>
+</head>
+<body>
+    <h1>Feed page</h1>
+    <!-- <input type="button" value="게시글 수정" onclick ="location.href='edit_post/'" ><input type="button" value="게시글 삭제" onclick ="location.href='delete_post/'" >
+    <h2> {{ post.title}} </h2> 
+    <p> {{ post.content }} </p> -->
+
+    <div></div>
+    
+    <form action="{% url 'feed' %}" method = "POST">
+        {% csrf_token %} 
+        <!-- post를 보내기 위해선 위의 csrf token을 넣어봐야 한다  -->
+        <label for = "content"> 포스트 작성칸</label> 
+        <textarea name="content" placeholder="LIKELION에 포스트를 남겨보세요 " id="content" cols="30" rows="10"></textarea>
+        
+        <input type = "submit" value = "Create">  
+    </form>
+
+    {% for comment in comments %}
+    {{ comment.content }}<br>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script> //axios 사용
+        const onClickLike = async (id) => {
+            const url = "/like_ajax/";
+            const {data} = await axios.comment(url,{ //POST 방식으로 url요청해서 서버에 id와 type을 보냄, 그리고 응답을 data 변수 안에 넣음
+                id
+            });
+            likeHandleResponse(data.id);
+        }
+
+        const likeHandleResponse = (id) => {
+            const element = document.querySelector(`.comment-id-${id} .comment__like`);  
+            console.log(message)
+            console.log(status)
+            if( message == "좋아요")
+                element.innerHTML = '<i class="fas fa-heart" style="color:red"></i>' //채워진하트
+            else
+                element.innerHTML = '<i class="far fa-heart"></i> '//빈하트`
+        };
+    </script> -->
+    
+    {% endfor %}
+
+</body>
+</html>
