@@ -54,7 +54,7 @@ MIDDLEWARE = [
 ]
 
 #허용할 아이피 주소 추가
-CORS_ORIGIN_WHITELIST = ('http://127.0.0.1:3000')
+CORS_ORIGIN_WHITELIST = ("https://127.0.0.1:3000",)
 CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'weverse.urls'

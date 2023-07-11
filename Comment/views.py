@@ -1,9 +1,11 @@
 
-from .models import Feed_Post, Comment #, #Comment_User
+from .models import Feed_Post, Comment 
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
-# from rest_framework import APIView
+from rest_framework.views import APIView
 from .serializer import Feed_PostSerializer, CommentSerializer
 from django.db import models 
+from rest_framework.response import Response
+
 
 class Feed_PostList(ListCreateAPIView):
     queryset = Feed_Post.objects.all()
@@ -22,17 +24,19 @@ class CommentPostList(ListCreateAPIView):
         post_id = self.kwargs['post_id']
         return Comment.objects.filter(post=post_id)
 
-# class ClickLikeAPIView(APIView):
-#     def post(self, request):
-#         post_id = request.data.get('post_id')
-#         post = Feed_Post.objects.get(id=post_id)
-#         post.like = not post.like
-#         post.save()
-#         return Response({'message': 'ok'})
+class ClickLikeAPIView(APIView):
+    def post(self, request):
+        post_id = request.data.get('post_id')
+        post = Feed_Post.objects.get(id=post_id)
+        post.like = not post.like
+        post.save()
+        return Response({'message': post.like})
 
 
-# class ArtistCommentList(ListCreateAPIView):
-#     queryset = Comment_User.objects.filter(id=2).values('user_id')
+class ArtistCommentList(ListCreateAPIView):
+    serializer_class = CommentSerializer
+    def get_queryset(self):
+        return Comment.objects.filter(user_id=2)
 
 
     
