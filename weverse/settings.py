@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-fwuh6f21461828go!q6!%fk&gm1$55sula7e#9h(nvbue#8$or
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["16.16.88.8","127.0.0.1"]
 
 
 # Application definition
@@ -52,9 +52,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
 ]
-
+#고정 아이피 16.16.88.8
 #허용할 아이피 주소 추가
-CORS_ORIGIN_WHITELIST = ("https://127.0.0.1:3000",)
+CORS_ORIGIN_WHITELIST = ("http://16.16.88.8:8000", "http://127.0.0.1:8000", )
 CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'weverse.urls'

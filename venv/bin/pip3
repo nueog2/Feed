@@ -1,4 +1,4 @@
-#!/home/goeun7378/likelion/Toyproject/venv/bin/python3
+#!/home/goeun7378/likelion/Toyproject/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
